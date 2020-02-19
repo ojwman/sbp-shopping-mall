@@ -29,12 +29,7 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		final String token = request.getHeader(TOKEN);
 		
-		System.out.println("JwtInterceptor > preHandle > token: " + token);
-	    logger.trace("Hello world.");
-	    logger.debug("Hello world.");
-//	    logger.info("Hello world.");
-//	    logger.warn("Hello world.");
-//	    logger.error("Hello world.");
+		logger.debug("JwtInterceptor > preHandle > token: " + token);
 		
 		if(token != null && jwtService.checkToken(token)){
 			return true;

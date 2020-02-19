@@ -1,5 +1,7 @@
 package io.ojw.mall.user.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,12 @@ public class UserService {
 	
 	public User getMyInfo(String id) throws Exception {
 		User user = mapper.getMyInfo(id);
+		
+		return user;
+	}
+	
+	public User getMyInfo2(Map<?, ?> mapParam) throws Exception {
+		User user = mapper.getMyInfo2(mapParam);
 		
 		return user;
 	}

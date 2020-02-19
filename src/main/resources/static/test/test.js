@@ -7,14 +7,15 @@ function login(ev) {
 	};
 	
 	var oOption = {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         },
-        body: JSON.stringify(oData), // body data type must match "Content-Type" header
+        /* body data type must match "Content-Type" header */
+        body: JSON.stringify(oData)
     };
 	
-	fetch('/user/login', oOption).then((res) => {
+	fetch("/user/login", oOption).then((res) => {
 		if (res.status === 200) {
 			res.text().then((text) => {
 				var oResult = JSON.parse(text);
@@ -49,11 +50,11 @@ function getMyInfo() {
 	
 	var oOption = {
         headers: {
-            'token': token
+            "token": token
         }
     };
 	
-	fetch('/user/auth/myinfo/ojw', oOption).then((res) => {
+	fetch("/user/auth/myinfo/ojw", oOption).then((res) => {
 		if (res.status === 200) {
 			res.text().then((text) => {
 				alert(text);
