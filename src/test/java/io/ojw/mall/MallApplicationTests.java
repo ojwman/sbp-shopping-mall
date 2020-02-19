@@ -1,10 +1,10 @@
-package io.ojw.sbpshoppingmall;
+package io.ojw.mall;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Sbp1ApplicationTests {
+class MallApplicationTests {
 
 	@Test
 	void contextLoads() {

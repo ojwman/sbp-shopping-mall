@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test page</title>
+<script type="text/javascript" src="test.js"></script>
+</head>
+<body>
+	<h1>test page</h1>
+	
+	<form action="#" id="loginForm">
+		ID: <input type="text" id="loginId" />
+		Password: <input type="password" id="loginPassword" />
+		<button type="submit" onclick="login(event);">login</button>
+	</form>
+	
+	<p>
+		<button onclick="getToken();">get token</button>
+		<button onclick="removeToken();">remove token</button>
+		<br />token: <span id="token"></span>
+	</p>
+	
+	<p>
+		<button onclick="getMyInfo();">get my info</button>
+	</p>
+</body>
+</html>
