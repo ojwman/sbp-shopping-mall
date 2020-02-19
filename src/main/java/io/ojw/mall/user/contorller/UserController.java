@@ -88,7 +88,11 @@ public class UserController {
 			logger.debug("user2: " + user2);*/
 			
 			// return
-			return new ResponseEntity<>(user, HttpStatus.OK);
+			HttpStatus httpStatus = HttpStatus.OK;
+			if (user == null) {
+				httpStatus = HttpStatus.NOT_FOUND;
+			}
+			return new ResponseEntity<>(user, httpStatus);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
