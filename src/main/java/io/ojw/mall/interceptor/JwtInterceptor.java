@@ -3,9 +3,6 @@ package io.ojw.mall.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -29,7 +26,7 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
 		
 		System.out.println("JwtInterceptor > preHandle > token: " + token);
 		
-		if(token != null && jwtService.checkJwt(token)){
+		if(token != null && jwtService.checkToken(token)){
 			return true;
 		}else{
 			throw new UnauthorizedException();

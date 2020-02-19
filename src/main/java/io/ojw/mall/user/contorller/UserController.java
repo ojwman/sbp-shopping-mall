@@ -3,15 +3,11 @@ package io.ojw.mall.user.contorller;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +21,6 @@ import io.ojw.mall.user.service.UserService;
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
-	private static final Logger logger = LogManager.getLogger(UserController.class);
-	
 	@Autowired
 	private UserService userService;
 	
@@ -34,7 +28,7 @@ public class UserController {
     private JwtService jwtService;
     
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<Map<String, Object>> name(@RequestBody Map<String, Object> param, HttpServletResponse resp) {
+	public ResponseEntity<Map<String, Object>> createToken(@RequestBody Map<String, Object> param, HttpServletResponse resp) {
 		try {
 			// get params
 			String id = (String) param.get("id");
@@ -48,7 +42,7 @@ public class UserController {
 				bUser = true;
 				
 				// make token and set response header
-				token = jwtService.makeJwt(user.getId(), user.getAuth());
+				token = jwtService.createToken(user.getId(), user.getAuth());
 //				System.out.println("token : " + token);
 //				jwtService.checkJwt(token);
 				resp.setHeader("token", token);

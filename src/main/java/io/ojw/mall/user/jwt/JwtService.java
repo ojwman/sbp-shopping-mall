@@ -20,10 +20,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Service
 public class JwtService {
+    private final String secretKey = "mall";
 
-    private String secretKey = "mall";
-
-    public String makeJwt(String id, String auth) throws Exception {
+    public String createToken(String id, String auth) throws Exception {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         Date expireTime = new Date();
         expireTime.setTime(expireTime.getTime() + 1000 * 60 * 1);
@@ -46,19 +45,15 @@ public class JwtService {
         return builder.compact();
     }
 
-    public boolean checkJwt(String jwt) throws Exception {
+    public boolean checkToken(String jwt) throws Exception {
         try {
             Claims claims = Jwts.parser()
             				.setSigningKey(DatatypeConverter.parseBase64Binary(secretKey))
             				.parseClaimsJws(jwt)
             				.getBody(); // 정상 수행된다면 해당 토큰은 정상토큰
-
-//            logger.info("expireTime :" + claims.getExpiration());
-//            logger.info("name :" + claims.get("name"));
-//            logger.info("Email :" + claims.get("email"));
             
-//            System.out.println("id :" + claims.get("id"));
-//            System.out.println("auth :" + claims.get("auth"));
+            System.out.println("id :" + claims.get("id"));
+            System.out.println("auth :" + claims.get("auth"));
 
             return true;
         } catch (ExpiredJwtException exception) {
