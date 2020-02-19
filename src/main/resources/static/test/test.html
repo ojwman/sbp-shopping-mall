@@ -4,14 +4,22 @@
 <meta charset="UTF-8">
 <title>test page</title>
 <script type="text/javascript" src="test.js"></script>
+<style type="text/css">
+p {
+	border: 1px solid;
+	padding: 10px;
+}
+</style>
 </head>
 <body>
 	<h1>test page</h1>
 	
 	<form action="#" id="loginForm">
-		ID: <input type="text" id="loginId" />
-		Password: <input type="password" id="loginPassword" />
-		<button type="submit" onclick="login(event);">login</button>
+		<p>	
+			ID: <input type="text" id="loginId" />
+			Password: <input type="password" id="loginPassword" />
+			<button type="submit" onclick="login(event);">login</button>
+		</p>
 	</form>
 	
 	<p>

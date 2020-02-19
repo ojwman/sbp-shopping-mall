@@ -24,7 +24,6 @@ import io.ojw.mall.user.service.UserService;
 
 @RestController
 @RequestMapping(value = "/user")
-//@CrossOrigin(origins="http://localhost:3000")
 public class UserController {
 	private static final Logger logger = LogManager.getLogger(UserController.class);
 	

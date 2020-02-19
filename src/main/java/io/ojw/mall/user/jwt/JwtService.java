@@ -31,22 +31,12 @@ public class JwtService {
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
 
         Map<String, Object> headerMap = new HashMap<String, Object>();
-
         headerMap.put("typ","JWT");
         headerMap.put("alg","HS256");
 
         Map<String, Object> map= new HashMap<String, Object>();
-
-//        String name = res.getParameter("name");
-//        String email = res.getParameter("email");
-
-//        map.put("name", name);
-//        map.put("email", email);
-
         map.put("id", id);
         map.put("auth", auth);
-        
-        
 
         JwtBuilder builder = Jwts.builder().setHeader(headerMap)
                 .setClaims(map)
