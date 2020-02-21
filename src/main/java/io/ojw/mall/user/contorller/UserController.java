@@ -107,20 +107,27 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/sign-up", method = RequestMethod.POST)
-	public ResponseEntity signUp(@RequestBody @Valid UserSignUp userSignUp, Errors errors) {
+	public ResponseEntity signUp(@RequestBody @Valid UserSignUp userSignUp, Errors errors) throws Exception {
 		logger.debug("param: " + userSignUp);
 		
+		// check default
 		if (errors.hasErrors()) {
         	return ResponseEntity.badRequest().body(errors);
 		}
 		
+		// check custom
 		signUpValidator.validate(userSignUp, errors);
-		
         if(errors.hasErrors()){
             return ResponseEntity.badRequest().body(errors);
         }
         
-		return null;
+        // insert user
+        int result = userService.insertUser(userSignUp);
+        if (result > 0) {
+        	return ResponseEntity.status(HttpStatus.CREATED).body(null);
+        } else {
+        	return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
 	}
 }
 

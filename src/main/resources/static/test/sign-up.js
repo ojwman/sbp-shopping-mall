@@ -22,13 +22,9 @@ function signUp(ev) {
 	
 	fetch("/user/sign-up", oOption).then((res) => {
 		if (res.status === 201) {
-			res.text().then((text) => {
-				var oResult = JSON.parse(text);
-				
-				alert(oResult);
-			});	
+			alert("sign up ok");
 		} else {
-//			debugger;	
+			alert("sign up failed");
 		}
 	}).catch((err) => {alert(err);});
 }

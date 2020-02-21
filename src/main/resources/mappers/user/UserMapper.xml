@@ -5,16 +5,36 @@
 	
 <mapper namespace="io.ojw.mall.user.mapper.UserMapper">
 	
-	<select id="checkUser" resultType="io.ojw.mall.user.domain.User">
+<select id="checkUser" resultType="io.ojw.mall.user.domain.User">
 select id, auth from user where id = #{id} and password = #{password} 
-	</select>
+</select>
 	
-	<select id="getMyInfo" resultType="io.ojw.mall.user.domain.User">
+<select id="getMyInfo" resultType="io.ojw.mall.user.domain.User">
 select * from user where id = #{id} 
-	</select>
+</select>
 	
-	<select id="getMyInfo2" parameterType="java.util.HashMap" resultType="io.ojw.mall.user.domain.User">
+<select id="getMyInfo2" parameterType="java.util.HashMap" resultType="io.ojw.mall.user.domain.User">
 select * from user where id = #{id} 
-	</select>
+</select>
+
+<select id="existsId" resultType="java.lang.Integer">
+select 1 from user where id = #{id}
+</select>
+
+<insert id="insertUser" parameterType="io.ojw.mall.user.domain.UserSignUp">
+insert into user
+       (id
+      , name
+      , password
+      , auth
+      , phone
+      ) 
+values (#{id}
+      , #{name}
+      , #{password}
+      , 'member'
+      , #{phone}
+      );
+</insert>
 
 </mapper>

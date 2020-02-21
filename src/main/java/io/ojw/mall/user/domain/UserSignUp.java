@@ -1,7 +1,6 @@
 package io.ojw.mall.user.domain;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,11 +12,13 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 public class UserSignUp {
+	@NotBlank
 	private String id;
+	@NotBlank
 	private String name;
-	@NotBlank @NotEmpty
+	@NotBlank
 	private String password;
-	@NotBlank @NotEmpty
+	@NotBlank
 	private String passwordCheck;
 	private String phone;
 }
