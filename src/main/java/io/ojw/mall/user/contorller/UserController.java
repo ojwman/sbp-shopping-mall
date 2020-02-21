@@ -5,12 +5,14 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.jsonwebtoken.Claims;
+import io.ojw.mall.user.domain.UserSignUp;
 import io.ojw.mall.user.domain.User;
 import io.ojw.mall.user.jwt.JwtService;
 import io.ojw.mall.user.service.UserService;
+import io.ojw.mall.user.validation.SignUpValidator;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -32,6 +36,9 @@ public class UserController {
 	
     @Autowired
     private JwtService jwtService;
+    
+    @Autowired
+    private SignUpValidator signUpValidator;
     
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> createToken(@RequestBody Map<String, Object> param, HttpServletResponse resp) {
@@ -99,4 +106,49 @@ public class UserController {
 		}
 	}
 	
+	@RequestMapping(value = "/sign-up", method = RequestMethod.POST)
+	public ResponseEntity signUp(@RequestBody @Valid UserSignUp userSignUp, Errors errors) {
+		logger.debug("param: " + userSignUp);
+		
+		if (errors.hasErrors()) {
+        	return ResponseEntity.badRequest().body(errors);
+		}
+		
+		signUpValidator.validate(userSignUp, errors);
+		
+        if(errors.hasErrors()){
+            return ResponseEntity.badRequest().body(errors);
+        }
+        
+		return null;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
