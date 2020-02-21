@@ -27,16 +27,11 @@ public class SignUpValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		UserSignUp userSignUp = (UserSignUp) target;
 		
-		try {
-			String id = userSignUp.getId();
-			Integer result = userMapper.existsId(id);
-			logger.debug("existsId result: " + result);
-			if (result != null) {
-				errors.rejectValue("id", "id aleady used");
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		String id = userSignUp.getId();
+		Integer result = userMapper.existsId(id);
+		logger.debug("existsId result: " + result);
+		if (result != null) {
+			errors.rejectValue("id", "id aleady used");
 		}
 		
 		if(! StringUtils.equals(userSignUp.getPassword(), userSignUp.getPasswordCheck())){
