@@ -8,6 +8,6 @@
 	- and Start Spring Boot
 
 ## Spec
-	- h2 db
-	- jwt auth
+	- H2
+	- JWT auth
 	- MyBatis
