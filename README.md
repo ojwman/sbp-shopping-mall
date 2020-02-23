@@ -9,5 +9,5 @@
 
 ## Spec
 	- H2
-	- JWT auth
 	- MyBatis
+	- JWT auth
