@@ -1,4 +1,4 @@
-# Shopping Mall with Spring Boot
+# Shopping Mall Server with Spring Boot
 
 ## Setting
 	- Suppose you use STS
