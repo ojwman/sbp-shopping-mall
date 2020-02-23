@@ -1,13 +1,13 @@
-# sbp-shopping-mall
+# Shopping Mall with Spring Boot
 
-## setting
-	- Suppose you use sts.
+## Setting
+	- Suppose you use STS
 	- Clone this project and Convert to maven project
 	- Intall lombok for ide
 	- Add JUnit library to Java Build Path
 	- and Start Spring Boot
 
-## spec
+## Spec
 	- h2 db
 	- jwt auth
 	- MyBatis
