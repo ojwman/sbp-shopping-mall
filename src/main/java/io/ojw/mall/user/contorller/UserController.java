@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.jsonwebtoken.Claims;
@@ -41,11 +42,15 @@ public class UserController {
     private SignUpValidator signUpValidator;
     
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<Map<String, Object>> createToken(@RequestBody Map<String, Object> param, HttpServletResponse resp) {
+//	public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, Object> param, HttpServletResponse resp) {
+	public ResponseEntity<Map<String, Object>> login(@RequestParam("id") String id
+													, @RequestParam("password") String password
+													, HttpServletRequest req
+													, HttpServletResponse res) {
 		try {
 			// get params
-			String id = (String) param.get("id");
-			String password = (String) param.get("password");
+//			String id = (String) param.get("id");
+//			String password = (String) param.get("password");
 			
 			// check user
 			User user = userService.checkUser(id, password);
@@ -58,7 +63,7 @@ public class UserController {
 				token = jwtService.createToken(user.getId(), user.getAuth());
 //				System.out.println("token : " + token);
 //				jwtService.checkJwt(token);
-				resp.setHeader("token", token);
+				res.setHeader("token", token);
 			}
 			
 			// return

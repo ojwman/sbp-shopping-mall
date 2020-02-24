@@ -17,6 +17,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<swagger.version>2.8.0</swagger.version>
 	</properties>
 
 	<dependencies>
@@ -67,18 +68,37 @@
 			</exclusions>
 		</dependency>
 		
+		<!-- JWT -->
 		<dependency>
 		    <groupId>io.jsonwebtoken</groupId>
 		    <artifactId>jjwt</artifactId>
 		    <version>0.7.0</version>
 		</dependency>
 		
+		<!-- Lang Utils -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.9</version>
 		</dependency>
 		
+		<!-- swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-spi</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+				
 	</dependencies>
 
 	<build>

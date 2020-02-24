@@ -5,14 +5,19 @@ function login(ev) {
 		id: document.getElementById("loginId").value,
 		password: document.getElementById("loginPassword").value
 	};
+	const formData = new URLSearchParams();
+	formData.append("id", oData.id);
+	formData.append("password", oData.password);
 	
 	var oOption = {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+//            "Content-Type": "application/json"
+            'Content-Type': 'application/x-www-form-urlencoded'
         },
         /* body data type must match "Content-Type" header */
-        body: JSON.stringify(oData)
+//        body: JSON.stringify(oData)
+        body: formData
     };
 	
 	fetch("/user/login", oOption).then((res) => {
