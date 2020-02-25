@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -112,6 +113,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/sign-up", method = RequestMethod.POST)
+	@Transactional(rollbackFor = Exception.class)
 	public ResponseEntity signUp(@RequestBody @Valid UserSignUp userSignUp, Errors errors) throws Exception {
 		logger.debug("param: " + userSignUp);
 		
@@ -129,6 +131,9 @@ public class UserController {
         // insert user
         int result = userService.insertUser(userSignUp);
         if (result > 0) {
+        	/*if (result == 1) {
+        		throw new Exception("need transaction");
+        	}*/
         	return ResponseEntity.status(HttpStatus.CREATED).body(null);
         } else {
         	return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
