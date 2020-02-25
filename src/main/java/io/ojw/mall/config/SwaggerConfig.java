@@ -1,4 +1,4 @@
-package io.ojw.mall;
+package io.ojw.mall.config;
 
 import java.time.LocalDate;
 
