@@ -11,7 +11,7 @@
 	<groupId>io.ojw</groupId>
 	<artifactId>sbp-shopping-mall</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>sbp-1</name>
 	<description>Shopping mall project for Spring Boot</description>
 
