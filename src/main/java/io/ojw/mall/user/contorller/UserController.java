@@ -78,7 +78,7 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping(value = "/auth/myinfo/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/jwt-auth/myinfo/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getMyInfo(@PathVariable String id, HttpServletRequest req) {
 		try {
 			// get token
