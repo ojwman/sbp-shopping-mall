@@ -15,6 +15,6 @@ mvn package
 
 # run
 cd target
-java -jar sbp-shopping-mall-0.0.1-SNAPSHOT.jar
+java -jar -Dspring.profiles.active=production sbp-shopping-mall-0.0.1-SNAPSHOT.jar
 
 echo "boot"
