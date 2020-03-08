@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 public class JwtInterceptor extends HandlerInterceptorAdapter {
 	Logger logger = LoggerFactory.getLogger("io.ojw.mall.interceptor.JwtInterceptor");
 	
-	private static final String TOKEN = "token";
+	private static final String TOKEN = "jwt-token";
 
 	private JwtService jwtService;
 	

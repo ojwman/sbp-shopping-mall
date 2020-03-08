@@ -28,8 +28,8 @@ function login(ev) {
 				if (oResult.bUser === true) {
 					alert("is User");
 					
-					var token = res.headers.get("token");
-					window.localStorage.setItem("token", token);
+					var token = res.headers.get("jwt-token");
+					window.localStorage.setItem("jwt-token", token);
 				} else {
 					alert("no User");
 				}
@@ -41,12 +41,12 @@ function login(ev) {
 }
 
 function getToken() {
-	var token = window.localStorage.getItem("token");
+	var token = window.localStorage.getItem("jwt-token");
 	document.getElementById("token").innerText = token;
 }
 
 function removeToken() {
-	window.localStorage.removeItem("token");
+	window.localStorage.removeItem("jwt-token");
 	document.getElementById("token").innerText = "";
 }
 
@@ -55,7 +55,7 @@ function getMyInfo() {
 	
 	var oOption = {
         headers: {
-            "token": token
+            "jwt-token": token
         }
     };
 	

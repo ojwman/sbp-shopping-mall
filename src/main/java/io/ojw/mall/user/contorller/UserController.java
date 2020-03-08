@@ -64,7 +64,7 @@ public class UserController {
 				token = jwtService.createToken(user.getId(), user.getAuth());
 //				System.out.println("token : " + token);
 //				jwtService.checkJwt(token);
-				res.setHeader("token", token);
+				res.setHeader("jwt-token", token);
 			}
 			
 			// return
@@ -82,7 +82,7 @@ public class UserController {
 	public ResponseEntity<User> getMyInfo(@PathVariable String id, HttpServletRequest req) {
 		try {
 			// get token
-			String token = req.getHeader("token");
+			String token = req.getHeader("jwt-token");
 			logger.debug("token: " + token);
 			
 			// get claims
