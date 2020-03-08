@@ -57,7 +57,7 @@ public class UserController {
 			bUser = true;
 			
 			// make token and set response header
-			token = jwtService.createToken(user.getId(), user.getAuth());
+			token = jwtService.createToken(user.getId(), user.getName(), user.getAuth());
 			res.setHeader("jwt-token", token);
 		}
 		
@@ -65,6 +65,30 @@ public class UserController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("bUser", bUser);
 		return new ResponseEntity<>(map, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/jwt-auth/tokeninfo", method = RequestMethod.GET)
+	public ResponseEntity<User> getTokenInfo(HttpServletRequest req) {
+		// get token
+		String token = req.getHeader("jwt-token");
+		logger.debug("token: " + token);
+		
+		// get claims
+		Claims claims = jwtService.getClaims(token);
+		String id = (String) claims.get("id");
+		String name = (String) claims.get("name");
+		String auth = (String) claims.get("auth");
+		logger.debug("claims: " + claims);
+		logger.debug("cId: " + id);
+		logger.debug("cId: " + name);
+		logger.debug("cId: " + auth);
+		
+		User user = new User();
+		user.setId(id);
+		user.setName(name);
+		user.setAuth(auth);
+		
+		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/jwt-auth/myinfo/{id}", method = RequestMethod.GET)

@@ -78,6 +78,34 @@ function getMyInfo() {
 	}).catch(err => alert(err));
 }
 
+function getTokenInfo() {
+	var token = window.localStorage.getItem("jwt-token");
+	
+	var oOption = {
+			headers: {
+				"jwt-token": token
+			}
+	};
+	
+	fetch("/user/jwt-auth/tokeninfo", oOption).then((res) => {
+		alert(res.status);
+		
+		if (res.status === 200) {
+			res.text().then((text) => {
+				alert(text);
+			});	
+		} else if(res.status === 401) {
+			res.text().then((text) => {
+				alert(text);
+			});
+		} else {
+			res.text().then((text) => {
+				alert(text);
+			});
+		}
+	}).catch(err => alert(err));
+}
+
 
 
 

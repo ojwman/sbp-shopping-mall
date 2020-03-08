@@ -21,7 +21,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JwtService {
     private final String secretKey = "mall";
 
-    public String createToken(String id, String auth) {
+    public String createToken(String id, String name, String auth) {
         // 
     	Date expireTime = new Date();
         expireTime.setTime(expireTime.getTime() + (1000 * 60 * 1));
@@ -39,6 +39,7 @@ public class JwtService {
         // 
         Map<String, Object> bodyMap= new HashMap<String, Object>();
         bodyMap.put("id", id);
+        bodyMap.put("name", name);
         bodyMap.put("auth", auth);
 
         JwtBuilder builder = Jwts.builder()
