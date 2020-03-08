@@ -13,8 +13,8 @@ public class ItemService {
 	@Autowired
 	private ItemMapper itemMapper;
 	
-	public List<Item> getItemByCategory(String category, int limitFrom, int limitTo) {
-		List<Item> list = itemMapper.getItemByCategory(category, limitFrom, limitTo);
+	public List<Item> getItemByCategory(String category, int limitFrom, int limitCount) {
+		List<Item> list = itemMapper.getItemByCategory(category, limitFrom, limitCount);
 		
 		return list;
 	}

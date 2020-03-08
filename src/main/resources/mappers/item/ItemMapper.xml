@@ -9,7 +9,7 @@
 select *
 from item
 where category = #{category}
-limit #{limitFrom}, #{limitTo}
+limit #{limitFrom}, #{limitCount}
 </select>
 
 </mapper>

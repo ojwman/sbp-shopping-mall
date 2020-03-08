@@ -23,13 +23,13 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 	
-	@RequestMapping(value = "/category/{category}/limitFrom/{limitFrom}/limitTo/{limitTo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/category/{category}/limitFrom/{limitFrom}/limitCount/{limitCount}", method = RequestMethod.GET)
 	public ResponseEntity<List<Item>> getItemByCategory(@PathVariable String category,
 														@PathVariable int limitFrom,
-														@PathVariable int limitTo
+														@PathVariable int limitCount
 			) {
 		// get
-		List<Item> list = itemService.getItemByCategory(category, limitFrom, limitTo);
+		List<Item> list = itemService.getItemByCategory(category, limitFrom, limitCount);
 		
 		// return
 		HttpStatus httpStatus = HttpStatus.OK;

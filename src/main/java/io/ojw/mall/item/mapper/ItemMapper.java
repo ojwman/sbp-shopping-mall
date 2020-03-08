@@ -9,5 +9,5 @@ import io.ojw.mall.item.domain.Item;
 public interface ItemMapper {
 	public List<Item> getItemByCategory(@Param("category") String category, 
 										@Param("limitFrom") int limitFrom,
-										@Param("limitTo") int limitTo);
+										@Param("limitCount") int limitCount);
 }
