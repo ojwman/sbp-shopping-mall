@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.ojw.mall.item.domain.Item;
 import io.ojw.mall.item.service.ItemService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value = "/item")
@@ -23,6 +26,13 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 	
+	@ApiOperation(value = "카테고리를 통한 아이템 조회(페이징)")
+	@ApiImplicitParams(
+			{@ApiImplicitParam(name = "category", value = "카테고리")
+			,@ApiImplicitParam(name = "limitFrom", value = "페이징 시작")
+			,@ApiImplicitParam(name = "limitCount", value = "페이징 갯수")
+			}
+	)
 	@RequestMapping(value = "/category/{category}/limitFrom/{limitFrom}/limitCount/{limitCount}", method = RequestMethod.GET)
 	public ResponseEntity<List<Item>> getItemByCategory(@PathVariable String category,
 														@PathVariable int limitFrom,
