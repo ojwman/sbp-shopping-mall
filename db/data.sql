@@ -1,4 +1,4 @@
-insert into user(id, name, password, auth, phone) values ('admin', 'admin', '1234', 'manager', '01041169771');
+insert into user(id, name, password, auth, phone) values ('admin', '관리자', '1234', 'manager', '01041169771');
 insert into user(id, name, password, auth, phone) values ('ojw', '오재원', '1234', 'member', '01041169771');
 insert into user(id, name, password, auth, phone) values ('lsm', '이소미', 'dlthal94', 'member', '01041169771');
 
