@@ -51,7 +51,7 @@ function removeToken() {
 }
 
 function getMyInfo() {
-	var token = window.localStorage.getItem("token");
+	var token = window.localStorage.getItem("jwt-token");
 	
 	var oOption = {
         headers: {
@@ -64,6 +64,10 @@ function getMyInfo() {
 			res.text().then((text) => {
 				alert(text);
 			});	
+		} else if(res.status === 401) {
+			res.text().then((text) => {
+				alert(text);
+			});
 		} else {
 			alert(res.status);	
 		}

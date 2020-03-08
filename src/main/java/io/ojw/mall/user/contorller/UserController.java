@@ -70,7 +70,7 @@ public class UserController {
 			// return
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("bUser", bUser);
-//			map.put("token", token);
+//			map.put("jwt-token", token);
 			return new ResponseEntity<>(map, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
