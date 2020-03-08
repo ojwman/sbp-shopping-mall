@@ -48,34 +48,23 @@ public class UserController {
 													, @RequestParam("password") String password
 													, HttpServletRequest req
 													, HttpServletResponse res) {
-		try {
-			// get params
-//			String id = (String) param.get("id");
-//			String password = (String) param.get("password");
 			
-			// check user
-			User user = userService.checkUser(id, password);
-			boolean bUser = false;
-			String token = null;
-			if (user != null) {
-				bUser = true;
-				
-				// make token and set response header
-				token = jwtService.createToken(user.getId(), user.getAuth());
-//				System.out.println("token : " + token);
-//				jwtService.checkJwt(token);
-				res.setHeader("jwt-token", token);
-			}
+		// check user
+		User user = userService.checkUser(id, password);
+		boolean bUser = false;
+		String token = null;
+		if (user != null) {
+			bUser = true;
 			
-			// return
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("bUser", bUser);
-//			map.put("jwt-token", token);
-			return new ResponseEntity<>(map, HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			// make token and set response header
+			token = jwtService.createToken(user.getId(), user.getAuth());
+			res.setHeader("jwt-token", token);
 		}
+		
+		// return
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("bUser", bUser);
+		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/jwt-auth/myinfo/{id}", method = RequestMethod.GET)

@@ -2,6 +2,7 @@ package io.ojw.mall.exception;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -28,8 +29,14 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
 	public ResponseEntity<?> handleException(HttpServletRequest request, Exception e) {
-    	logger.error(e.getMessage());
-    	
+    	logger.error("===start handleException");
+    	logger.error("URI: " + request.getRequestURI());
+    	logger.error("Method: " + request.getMethod());
+//        	logger.error("Body: " + request.getReader().readLine());
+//        	logger.error("Body: " + httpEntity.getBody());
+    	logger.error("Error Message: " + e.getMessage());
+    	logger.error("Error Stack: " + ExceptionUtils.getStackTrace(e));
+    	logger.error("===end handleException");
     	return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
     

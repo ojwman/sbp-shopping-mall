@@ -21,7 +21,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JwtService {
     private final String secretKey = "mall";
 
-    public String createToken(String id, String auth) throws Exception {
+    public String createToken(String id, String auth) {
         // 
     	Date expireTime = new Date();
         expireTime.setTime(expireTime.getTime() + (1000 * 60 * 1));
