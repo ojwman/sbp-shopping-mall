@@ -60,6 +60,8 @@ function getMyInfo() {
     };
 	
 	fetch("/user/jwt-auth/myinfo/ojw", oOption).then((res) => {
+		alert(res.status);
+		
 		if (res.status === 200) {
 			res.text().then((text) => {
 				alert(text);
@@ -69,7 +71,9 @@ function getMyInfo() {
 				alert(text);
 			});
 		} else {
-			alert(res.status);	
+			res.text().then((text) => {
+				alert(text);
+			});
 		}
 	}).catch(err => alert(err));
 }
