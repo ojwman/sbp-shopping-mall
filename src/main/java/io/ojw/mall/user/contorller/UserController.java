@@ -27,6 +27,9 @@ import io.ojw.mall.user.domain.User;
 import io.ojw.mall.user.jwt.JwtService;
 import io.ojw.mall.user.service.UserService;
 import io.ojw.mall.user.validation.SignUpValidator;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -67,6 +70,11 @@ public class UserController {
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "[jwt-token] jwt token을 통한 사용자 정보 조회")
+	@ApiImplicitParams(
+			{@ApiImplicitParam(name = "jwt-token", value = "jwt-token", required = true, paramType = "header")
+			}
+	)
 	@RequestMapping(value = "/jwt-auth/tokeninfo", method = RequestMethod.GET)
 	public ResponseEntity<User> getTokenInfo(HttpServletRequest req) {
 		// get token
