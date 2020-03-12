@@ -18,4 +18,16 @@ public class ItemService {
 		
 		return list;
 	}
+
+	public Integer getMaxId() {
+		int maxId = itemMapper.getMaxId();
+		
+		return maxId;
+	}
+
+	public List<Item> getItemByKeyword(int from_id, String keyword) {
+		List<Item> list = itemMapper.getItemByKeyword(from_id, keyword);
+		
+		return list;
+	}
 }

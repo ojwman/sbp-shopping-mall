@@ -12,4 +12,16 @@ where category = #{category}
 limit #{limitFrom}, #{limitCount}
 </select>
 
+<select id="getMaxId" resultType="java.lang.Integer">
+select nvl(max(id), 0)
+from item
+</select>
+
+<select id="getItemByKeyword" resultType="io.ojw.mall.item.domain.Item">
+select *
+from item
+where id between (#{from_id} - 1000) and #{from_id} 
+and hashtag like '%' || #{keyword} || '%'
+</select>
+
 </mapper>
