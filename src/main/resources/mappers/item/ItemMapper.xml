@@ -21,7 +21,10 @@ from item
 select *
 from item
 where id between (#{from_id} - 1000) and #{from_id} 
+<foreach collection="aKeyword" item="keyword">
 and hashtag like '%' || #{keyword} || '%'
+</foreach> 
+
 </select>
 
 </mapper>

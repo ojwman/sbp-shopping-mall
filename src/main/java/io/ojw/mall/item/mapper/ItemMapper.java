@@ -13,5 +13,5 @@ public interface ItemMapper {
 
 	public Integer getMaxId();
 
-	public List<Item> getItemByKeyword(int from_id, String keyword);
+	public List<Item> getItemByKeyword(int from_id, String[] aKeyword);
 }

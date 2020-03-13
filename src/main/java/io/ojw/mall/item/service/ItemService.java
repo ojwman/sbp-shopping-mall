@@ -25,8 +25,8 @@ public class ItemService {
 		return maxId;
 	}
 
-	public List<Item> getItemByKeyword(int from_id, String keyword) {
-		List<Item> list = itemMapper.getItemByKeyword(from_id, keyword);
+	public List<Item> getItemByKeyword(int from_id, String[] aKeyword) {
+		List<Item> list = itemMapper.getItemByKeyword(from_id, aKeyword);
 		
 		return list;
 	}

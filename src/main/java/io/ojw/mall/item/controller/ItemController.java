@@ -2,6 +2,7 @@ package io.ojw.mall.item.controller;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,8 +64,12 @@ public class ItemController {
 	public ResponseEntity<List<Item>> getItemByKeyword(@PathVariable int from_id,
 														@PathVariable String keyword
 			) {
+		// split keyword by Whitespace(" ")
+		if(StringUtils.isEmpty(keyword)) {throw new IllegalArgumentException("keyword should not be empty.");}
+		String[] aKeyword = keyword.split(" ");
+		
 		// get
-		List<Item> list = itemService.getItemByKeyword(from_id, keyword);
+		List<Item> list = itemService.getItemByKeyword(from_id, aKeyword);
 		
 		// return
 		HttpStatus httpStatus = HttpStatus.OK;
