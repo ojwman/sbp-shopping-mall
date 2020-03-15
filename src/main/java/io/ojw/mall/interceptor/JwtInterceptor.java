@@ -9,6 +9,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import io.ojw.mall.user.jwt.JwtService;
 import io.ojw.mall.user.jwt.UnauthorizedException;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,6 +31,12 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
 		final String token = request.getHeader(TOKEN);
 		
 		logger.debug("JwtInterceptor > preHandle > token: " + token);
+		
+		if (StringUtils.equals(request.getMethod(), "OPTIONS")) {
+			logger.debug("if request options method is options, return true");
+			
+			return true;
+		}
 		
 		if(token != null && jwtService.checkToken(token)){
 			return true;
