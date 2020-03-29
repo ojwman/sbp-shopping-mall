@@ -1,9 +1,6 @@
 #!/bin/bash
 echo "start spring boot server"
 
-# remove
-rm -r sbp-shopping-mall
-
 # clone git
 git clone https://github.com/ojwman/sbp-shopping-mall
 
