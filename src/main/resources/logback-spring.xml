@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="LOGS_ABSOLUTE_PATH" value="../sbp-shopping-mall-logs" />
+    <property name="LOGS_ABSOLUTE_PATH" value="../sbp-shopping-mall-log" />
  
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -21,7 +21,7 @@
             <fileNamePattern>${LOGS_ABSOLUTE_PATH}/logback.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- or whenever the file size reaches 100MB -->
-                <maxFileSize>5MB</maxFileSize>
+                <maxFileSize>100MB</maxFileSize>
                 <!-- kb, mb, gb -->
             </timeBasedFileNamingAndTriggeringPolicy>
             <maxHistory>30</maxHistory>
