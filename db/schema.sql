@@ -16,3 +16,11 @@ create table item (
 	thumbnail clob,
 	hashtag varchar
 );
+
+CREATE TABLE IF NOT EXISTS MEMBER ( 
+  MBR_NO BIGINT NOT NULL AUTO_INCREMENT
+, ID VARCHAR(200)
+, NAME VARCHAR(200)
+, PRIMARY KEY(MBR_NO) /*AUTO_INCREMENT 컬럼 단일 PK */ 
+);
+--출처: https://goddaehee.tistory.com/209 [갓대희의 작은공간]
